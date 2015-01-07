@@ -11,7 +11,7 @@ class DefaultController extends Controller
     // see this bundle in action
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="homepage", options={"sitemap" = true})
      */
     public function indexAction()
     {
@@ -36,11 +36,11 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/posts/{id}/comments", name="posts_comments")
+     * @Route("/posts/{postId}/comments/{commentId}", name="posts_comments_show")
      */
-    public function commentListAction($id)
+    public function commentShowAction($postId, $commentId)
     {
-        /** some stuff here to find all comments for a given post */
-        return $this->render('default/comment_list.html.twig');
+        /** some stuff here to find an individual comment for a given post */
+        return $this->render('default/comment_show.html.twig');
     }
 }

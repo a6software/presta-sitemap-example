@@ -27,7 +27,6 @@ class Post
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="post")
-     * @ORM\OrderBy({"sortOrder" = "ASC"})
      */
     private $comments;
 
@@ -87,7 +86,7 @@ class Post
     /**
      * @return mixed
      */
-    public function getEpisodes()
+    public function getComments()
     {
         return $this->comments;
     }
