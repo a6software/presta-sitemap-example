@@ -4,3 +4,10 @@ parameters:
 #    parameter_name: value
 
 services:
+    sitemap.listener:
+        class: AppBundle\Event\Listener\SitemapListener
+        arguments:
+            - @router
+            - @doctrine.orm.default_entity_manager
+        tags:
+            - { name: "presta.sitemap.listener" }

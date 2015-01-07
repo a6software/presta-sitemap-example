@@ -11,7 +11,7 @@ class DefaultController extends Controller
     // see this bundle in action
 
     /**
-     * @Route("/", name="homepage", options={"sitemap" = true})
+     * @Route("/", name="homepage")
      */
     public function indexAction()
     {
@@ -19,7 +19,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/posts", name="posts_list")
+     * @Route("/posts", name="posts_list", options={"sitemap" = {"priority" = 0.7, "changefreq" = "weekly" }})
      */
     public function postListAction()
     {
