@@ -31,14 +31,14 @@ class SitemapListener implements SitemapListenerInterface
         if (is_null($section) || $section == 'default') {
 
             //get absolute homepage url
-            $url = $this->router->generate('homepage', array(), true);
+            $url = $this->router->generate('homepage', array(), RouterInterface::ABSOLUTE_URL);
 
             //add homepage url to the urlset named default
             $this->createSiteMapEntry($url, new \DateTime(), UrlConcrete::CHANGEFREQ_HOURLY, 1);
 
             $posts = $this->entityManager->getRepository('AppBundle:Post')->findAll();
             foreach ($posts as $post) {
-                $url = $this->router->generate('posts_show', array('id'=>$post->getId()), true);
+                $url = $this->router->generate('posts_show', array('id'=>$post->getId()), RouterInterface::ABSOLUTE_URL);
 
                 $this->createSiteMapEntry(
                     $url,
@@ -55,7 +55,7 @@ class SitemapListener implements SitemapListenerInterface
                     $url = $this->router->generate('posts_comments_show', array(
                         'postId' => $post->getId(),
                         'commentId'=>$comment->getId()
-                    ), true);
+                    ), RouterInterface::ABSOLUTE_URL);
 
                     $this->createSiteMapEntry(
                         $url,
